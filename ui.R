@@ -422,7 +422,7 @@ navbarPage(
   tags$head(tags$style(".shiny-output-error{color: grey;}"))###showing error in grey color
 ),
 
-tags$footer(HTML("<p><i>This webpage was made using</i> <a href='https://github.uio.no/ankushs/ShinyArchR.UiO' target=\"_blank\">ShinyArchr.UiO</a>.</p>"),
+tags$footer(HTML("<p><i>This webpage was made using</i> <a href='https://github.com/EskelandLab/ShinyArchRUiO' target=\"_blank\">ShinyArchr.UiO</a>.</p>"),
             align = "left", style = "
               position:relative;
               bottom:0;

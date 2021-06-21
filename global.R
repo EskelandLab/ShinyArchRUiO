@@ -16,7 +16,7 @@
 
 ####
 packages <- c("Seurat","shinycssloaders","hexbin","magick",
-             "gridExtra", "grid","patchwork","shinybusy")
+             "gridExtra", "grid","patchwork","shinybusy","ArchR")
 
 ## Now load or install&load all
 package.check <- lapply(
@@ -48,9 +48,9 @@ set.seed(1)
 #Load Saved-project folders path e.g 'Save-ArchRProject2'<- loadArchRProject("path/to/your/Save-ArchRProject2"). Save project also after trajectory analysis e.g as Save-ArchRProject5
 #Please see ArchR  full manual for saveArchRProject() function or use the ArchR.RMD for your analysis provided with the source code which follows the steps illustrated in ArchR full manual. Save-ArchRProject5
 
-savedArchRProject1 <- loadArchRProject("/Users/ankushs/Dropbox (UiO)/data_visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme2/")
-savedArchRProject2 <- loadArchRProject("/Users/ankushs/Dropbox (UiO)/data_visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme3/")
-savedArchRProject3 <- loadArchRProject("/Users/ankushs/Dropbox (UiO)/data_visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme5/")
+savedArchRProject1 <- loadArchRProject("~/Save-ProjHeme2/",showLogo = FALSE)
+savedArchRProject2 <- loadArchRProject("~/Save-ProjHeme3/",showLogo = FALSE)
+savedArchRProject3 <- loadArchRProject("~/Save-ProjHeme5/",showLogo = FALSE)
 
 ########################################################################
 #                         Add Metadata of Trajectory
@@ -71,7 +71,7 @@ cluster_umap <- plotEmbedding(
   rastr = FALSE,
   size=0.5,
 
-  )+ggtitle("Colored by scATAC-seq clusters")+theme(text=element_text(size=12), legend.title = element_text(size = 12),legend.text = element_text(size = 9))
+  )+ggtitle("Colored by scATAC-seq clusters")+theme(text=element_text(size=12), legend.title = element_text(size = 12),legend.text = element_text(size = 6))
 
 sample_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
@@ -81,7 +81,7 @@ sample_umap <- plotEmbedding(
   embedding = "UMAP",
   rastr = FALSE,
   size=0.5
-)+ ggtitle("Colored by original identity")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 9))
+)+ ggtitle("Colored by original identity")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
 
 unconstrained_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
@@ -93,7 +93,7 @@ unconstrained_umap <- plotEmbedding(
  
   rastr = FALSE,
   size=0.5
-  )+ggtitle("UMAP: unconstrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 9))
+  )+ggtitle("UMAP: unconstrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
 
 constrained_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
@@ -103,7 +103,7 @@ constrained_umap <- plotEmbedding(
   rastr = FALSE,
   baseSize=12,
   size=0.5
-)+ggtitle("UMAP: constrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 9))
+)+ggtitle("UMAP: constrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
 
 
 constrained_remapped_umap <- plotEmbedding(
@@ -111,7 +111,7 @@ constrained_remapped_umap <- plotEmbedding(
   colorBy = "cellColData", 
   name = "Clusters2",
   rastr = FALSE,
-  )+ggtitle("UMAP: Constrained remapped clusters")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 9))
+  )+ggtitle("UMAP: Constrained remapped clusters")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
 
 umaps<-list("Clusters"= cluster_umap,"Sample"= sample_umap,"Unconstrained"=unconstrained_umap,"Constrained"=constrained_umap,"Constrained remap"=constrained_remapped_umap)
 ########################################################################
