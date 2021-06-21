@@ -97,7 +97,7 @@ Navigate to the folder containing ShinyArchRUiO.
     shiny::runApp('ShinyArchRUiO')
 
 ***
-![ShinyArchRUiO tab Information](https://github.uio.no/ankushs/ShinyArchrUiO/blob/main/example_data/tab_info_wiki.png)
+![ShinyArchRUiO tab Information](https://github.com/EskelandLab/ShinyArchrUiO/blob/main/example_data/tab_info_wiki.png)
 ***
 ## ShinyArchR.UiO Visualization
 #### scClusters
