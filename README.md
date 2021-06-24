@@ -1,7 +1,7 @@
 # ShinyArchrUiO
-  ShinyArchR.UiO (ShinyArchR User interface Open) is an user-friendly, integrative, and open-source shiny-based web app using R programming for   
-  visualization of massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 
+  ShinyArchR.UiO(ShinyArchR User interface Open) is an user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 
   2021](https://www.nature.com/articles/s41588-021-00790-6)).
+  Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website. 
  
 ***
 ## Salient Features
