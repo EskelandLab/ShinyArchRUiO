@@ -136,7 +136,7 @@ Q: How much memory/storage space does ShinyArchR.UiO and the Shiny app consume?
 
 ***
 ## Links and Citation info
-` ShinyArchR.UiO example website is available at https://cancell.medisin.uio.no/ShinyArchR.UiO:`. 
+ [ShinyArchR.UiO web interface](https://cancell.medisin.uio.no/ShinyArchR.UiO) 
 
-` Please cite:: BiorXiV.com`
+ Please cite our [BiorXiV preprint](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v1)
 ***
