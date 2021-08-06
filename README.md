@@ -121,7 +121,7 @@ Navigate to the folder containing ShinyArchRUiO.
 #### Peak2GeneLinks heatmaps. 
 Visualize heatmaps for Peak2Genelinks top markers in scATAC-seq and scRNA-seq.  
 
-**For a more detailed description, Please see supplementary information (biorXiv supplementary information link).**
+**For a more detailed description, Please see [supplementary information](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2.supplementary-material).**
 
 ## Frequently Asked Questions.  
 
