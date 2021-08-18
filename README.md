@@ -1,8 +1,11 @@
 # ShinyArchrUiO
-  ShinyArchR.UiO(ShinyArchR User interface Open) is an user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 
+  ShinyArchR.UiO(ShinyArchR User interface Open) is an user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of  massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 
   2021](https://www.nature.com/articles/s41588-021-00790-6)).
   Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website. 
  
+ ## Downsampled tutorial data
+ We utilized the tutorial data downloaded using the getTutorialData()function for Shiny instance of ShinyArchR.UiO. The downsampled tutorial data of hematopoietic cells approximately 0.5 GB in size is used for the analysis with the steps described in full manual of ArchR toolkit (https://www.archrproject.com/bookdown/index.html). 
+
 ***
 ## Salient Features
   ShinyArchR.UiO is written in R Programming using Shiny package, enabling its use locally as well as making it available to broader 
@@ -73,7 +76,6 @@ Open **global.R** file in a file editor and specify the following parameters:
 ArchRThreads = 1
 ```
 
-
 Provide the path to the saved folders in global.R**
 
     savedArchRProject1 <- loadArchRProject("path to projHeme2/")
@@ -112,7 +114,6 @@ Navigate to the folder containing ShinyArchRUiO.
    Feature Comparision tab shows Multi-dimensional reduction Umaps allowing users to compare features of interest for **GeneScoreMatrix** and **GeneIntegrationmatrix**. 
 #### Pseudotime trajectories. 
   Visualize Pseudotime trajectory for  
-
 **GeneScorematrix**,  
 **GeneIntegrationmatrix**,  
 **Motifmatrix**,  
@@ -129,7 +130,13 @@ Q: Which version of R programming is required?
 * R version 4.0.0  and over is recommended.  
 
 Q: What are the required packages for running ShinyArchRUiO?
-* Please ensure shiny, ArchR, Seurat, Magick, hexbin, shinybusy, and other dependencies required are installed and loaded properly in the R environment if running within the R environment. More details on the procedure to install packages and their dependencies are in the detailed tutorial.
+* Please ensure shiny, ArchR, Seurat, Magick, hexbin, shinybusy, and other dependencies required are installed and loaded properly in the R environment if running within the R environment. More details about required packages and their dependencies along  can be found in session information file in Github repository .
+
+Q: How to set reference genome other than hg19 ?
+ShinyArchR.UiO supports visualization of additional genome annotations and custom annotations. A genome is set as the basis for gene and genome annotations.  In our demo version, we utilized data aligned using hg19 genome version.  However, User can analyze data for any species by custom genome and gene annotations using the createGeneAnnotation() and createGenomeAnnotation() functions or ArchR. ArchR natively supports “hg19”, “hg38”, “mm9”, and “mm10” and using addArchRGenome("hg38") will use "hg38" instead of hg19. 
+
+![image](https://user-images.githubusercontent.com/32255128/129893934-92d4cbc1-8a0f-4815-80e8-ec642303611b.png)
+
 
 Q: How much memory/storage space does ShinyArchR.UiO and the Shiny app consume?
 * A: The Shiny app itself is less memory intensive and is meant to be a heavy-duty app where multiple users can access the app at the same time. The memory required is dependent on the saved project files from ArchR. Simultaneously, ArchR employs Arrow files, an HDF5 file format, to store massive single-cell chromatin accessibility data on disk/ user’s server. Initial setup of ShinyArchr.UiO is computation-intensive.  This includes steps for computing marker genes for peak2genelinks analysis and other plots. A typical laptop with 8GB RAM can handle datasets from estimated 10k cells while 16GB RAM machines can handle around 20k-50k cells. Initialization of the app takes approximately 5-10 minutes for a downsampled example tutorial dataset of hematopoietic cells utilized in the ArchR manual.
