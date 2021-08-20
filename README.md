@@ -135,9 +135,6 @@ Q: What are the required packages for running ShinyArchRUiO?
 Q: How to set reference genome other than hg19 ?
 ShinyArchR.UiO supports visualization of additional genome annotations and custom annotations. A genome is set as the basis for gene and genome annotations.  In our demo version, we utilized data aligned using hg19 genome version.  However, User can analyze data for any species by custom genome and gene annotations using the createGeneAnnotation() and createGenomeAnnotation() functions or ArchR. ArchR natively supports “hg19”, “hg38”, “mm9”, and “mm10” and using addArchRGenome("hg38") will use "hg38" instead of hg19. 
 
-![image](https://user-images.githubusercontent.com/32255128/129893934-92d4cbc1-8a0f-4815-80e8-ec642303611b.png)
-
-
 Q: How much memory/storage space does ShinyArchR.UiO and the Shiny app consume?
 * A: The Shiny app itself is less memory intensive and is meant to be a heavy-duty app where multiple users can access the app at the same time. The memory required is dependent on the saved project files from ArchR. Simultaneously, ArchR employs Arrow files, an HDF5 file format, to store massive single-cell chromatin accessibility data on disk/ user’s server. Initial setup of ShinyArchr.UiO is computation-intensive.  This includes steps for computing marker genes for peak2genelinks analysis and other plots. A typical laptop with 8GB RAM can handle datasets from estimated 10k cells while 16GB RAM machines can handle around 20k-50k cells. Initialization of the app takes approximately 5-10 minutes for a downsampled example tutorial dataset of hematopoietic cells utilized in the ArchR manual.
 
