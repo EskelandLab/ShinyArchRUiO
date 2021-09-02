@@ -4,8 +4,9 @@
   Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website. 
  
  ## Downsampled tutorial data
- We utilized the tutorial data downloaded using the getTutorialData()function for Shiny instance of ShinyArchR.UiO. The downsampled tutorial data of hematopoietic cells approximately 0.5 GB in size is used for the analysis with the steps described in full manual of ArchR toolkit (https://www.archrproject.com/bookdown/index.html). 
-## Downsampled tutorial data
+ We utilized the tutorial data downloaded using the **getTutorialData()** function for Shiny instance of ShinyArchR.UiO. The downsampled tutorial data of hematopoietic cells approximately 0.5 GB in size is used for the analysis with the steps described in full manual of ArchR toolkit (https://www.archrproject.com/bookdown/index.html). 
+## Input Data for ArchR processing
+ArchR can read a wide range of input formats, often in fragment files or BAM files, but it is also capable of reading scATAC-seq data. scATAC-seq fragment files contain the corresponding cell ID for each scATAC-seq fragment, sorted into tabix files. BAM files contain information about each scATAC-seq fragment, raw sequence, cellular barcode ID, and other information in tabularized format. The preprocessing pipeline defines what input format is used. The 10x Genomics Cell Ranger software, for example, returns fragment files, while sci-ATAC-seq applications use BAM files. To read fragment files, ArchR uses "scanTabix" and to read BAM files, it uses "scanBam". To support the input process, input data chunks are converted to a compressed table-based representation of fragments, which includes the fragment chromosome, offset-adjusted start and end positions, as well as the cellular barcode ID. To preserve memory consumption while maintaining quick access to chunks, chunks are stored in a temporary HDF5-formatted file. The final step involves reading, organizing, and rewriting all portions of each chromosome to an Arrow file within a single HDF5 group referred to as a "fragment". In this way, ArchR is able to handle extremely large input files efficiently and with very low memory usage, allowing it to fully utilize parallel processing.
 
 ***
 ## Salient Features
@@ -123,7 +124,6 @@ Navigate to the folder containing ShinyArchRUiO.
 * Visualize heatmaps for Peak2Genelinks top markers in scATAC-seq and scRNA-seq.  
 
 **For a more detailed description, Please see [supplementary information](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2.supplementary-material).**
-**General introduction and ShinyArchR.UiO setup, Please see [Video tutorial](https://youtu.be/LvLEHx3fnPQ).**
 ## Frequently Asked Questions.  
 
 Q: Which version of R programming is required?
@@ -142,7 +142,7 @@ Q: If you are getting *502 Bad Gateway* error on demo [ShinyArchR.UiO web interf
 * Perform a hard refresh in your browser. Clear your browser cache and delete cookies. Your browser may be holding on to certain files that were saved once you visited the website with a 502 error. Please wait for 5-10 minutes,  This could be due to higher load on our server side , please let us know if the error still persists.  
 
 Q: Specification of ShinyArchR.UiO server ?
-*
+
 ```r 
 RHEL system and we use SElinux, nginx and SSL
 Model name:	Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz
@@ -160,5 +160,7 @@ Kernel:	Linux 4.18.0-305.el8.x86_64
 
 ***
 ## Links and Citation info
- Please cite our [BiorXiV preprint](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v1)
+For general introduction and setting up of ShinyArchR.UiO locally, Please see this **[Video tutorial](https://youtu.be/LvLEHx3fnPQ).**
+
+Please cite our **[BiorXiV preprint](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v1)**
 ***
