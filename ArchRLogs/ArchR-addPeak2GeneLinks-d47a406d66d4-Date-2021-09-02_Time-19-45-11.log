@@ -1,0 +1,341 @@
+
+           ___      .______        ______  __    __  .______      
+          /   \     |   _  \      /      ||  |  |  | |   _  \     
+         /  ^  \    |  |_)  |    |  ,----'|  |__|  | |  |_)  |    
+        /  /_\  \   |      /     |  |     |   __   | |      /     
+       /  _____  \  |  |\  \\___ |  `----.|  |  |  | |  |\  \\___.
+      /__/     \__\ | _| `._____| \______||__|  |__| | _| `._____|
+    
+Logging With ArchR!
+
+Start Time : 2021-09-02 19:45:11
+
+------- ArchR Info
+
+ArchRThreads = 4
+ArchRGenome = Hg19
+
+------- System Info
+
+Computer OS = unix
+Total Cores = 8
+
+------- Session Info
+
+R version 4.0.2 (2020-06-22)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS  10.16
+
+Matrix products: default
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+ [1] parallel  stats4    grid      stats     graphics  grDevices utils     datasets  methods  
+[10] base     
+
+other attached packages:
+ [1] gtable_0.3.0                ggrepel_0.9.1               circlize_0.4.12            
+ [4] ComplexHeatmap_2.4.3        nabor_0.5.0                 ggseqlogo_0.1              
+ [7] ArchR_1.0.1                 magrittr_2.0.1              rhdf5_2.32.4               
+[10] Matrix_1.3-2                data.table_1.14.0           SummarizedExperiment_1.18.2
+[13] DelayedArray_0.14.1         matrixStats_0.58.0          Biobase_2.48.0             
+[16] GenomicRanges_1.40.0        GenomeInfoDb_1.24.2         IRanges_2.22.2             
+[19] S4Vectors_0.26.1            BiocGenerics_0.34.0         ggplot2_3.3.3              
+[22] shinybusy_0.2.2             patchwork_1.1.1             gridExtra_2.3              
+[25] magick_2.7.0                hexbin_1.28.2               shinycssloaders_1.0.0      
+[28] SeuratObject_4.0.0          Seurat_4.0.1                shiny_1.6.0                
+
+loaded via a namespace (and not attached):
+  [1] utf8_1.2.1                        reticulate_1.18                  
+  [3] R.utils_2.10.1                    tidyselect_1.1.0                 
+  [5] poweRlaw_0.70.6                   RSQLite_2.2.4                    
+  [7] AnnotationDbi_1.50.3              htmlwidgets_1.5.3                
+  [9] BiocParallel_1.22.0               Rtsne_0.15                       
+ [11] munsell_0.5.0                     codetools_0.2-18                 
+ [13] ica_1.0-2                         DT_0.17                          
+ [15] future_1.21.0                     miniUI_0.1.1.1                   
+ [17] withr_2.4.1                       colorspace_2.0-0                 
+ [19] knitr_1.31                        rstudioapi_0.13                  
+ [21] ROCR_1.0-11                       tensor_1.5                       
+ [23] listenv_0.8.0                     labeling_0.4.2                   
+ [25] GenomeInfoDbData_1.2.3            polyclip_1.10-0                  
+ [27] farver_2.1.0                      bit64_4.0.5                      
+ [29] parallelly_1.24.0                 vctrs_0.3.6                      
+ [31] generics_0.1.0                    xfun_0.22                        
+ [33] R6_2.5.0                          clue_0.3-58                      
+ [35] bitops_1.0-6                      spatstat.utils_2.1-0             
+ [37] cachem_1.0.4                      assertthat_0.2.1                 
+ [39] promises_1.2.0.1                  scales_1.1.1                     
+ [41] debugme_1.1.0                     Cairo_1.5-12.2                   
+ [43] globals_0.14.0                    goftest_1.2-2                    
+ [45] seqLogo_1.54.3                    rlang_0.4.10                     
+ [47] GlobalOptions_0.1.2               splines_4.0.2                    
+ [49] rtracklayer_1.48.0                lazyeval_0.2.2                   
+ [51] spatstat.geom_1.65-5              BiocManager_1.30.10              
+ [53] yaml_2.2.1                        reshape2_1.4.4                   
+ [55] abind_1.4-5                       crosstalk_1.1.1                  
+ [57] rsconnect_0.8.16                  httpuv_1.5.5                     
+ [59] tools_4.0.2                       ellipsis_0.3.1                   
+ [61] spatstat.core_1.65-5              jquerylib_0.1.3                  
+ [63] RColorBrewer_1.1-2                ggridges_0.5.3                   
+ [65] Rcpp_1.0.6                        plyr_1.8.6                       
+ [67] zlibbioc_1.34.0                   purrr_0.3.4                      
+ [69] RCurl_1.98-1.3                    rpart_4.1-15                     
+ [71] deldir_0.2-10                     pbapply_1.4-3                    
+ [73] GetoptLong_1.0.5                  cowplot_1.1.1                    
+ [75] zoo_1.8-9                         cluster_2.1.1                    
+ [77] scattermore_0.7                   lmtest_0.9-38                    
+ [79] RANN_2.6.1                        fitdistrplus_1.1-3               
+ [81] hms_1.0.0                         mime_0.10                        
+ [83] evaluate_0.14                     xtable_1.8-4                     
+ [85] XML_3.99-0.6                      shape_1.4.5                      
+ [87] compiler_4.0.2                    tibble_3.1.0                     
+ [89] KernSmooth_2.23-18                crayon_1.4.1                     
+ [91] BSgenome.Hsapiens.UCSC.hg19_1.4.3 R.oo_1.24.0                      
+ [93] htmltools_0.5.1.1                 mgcv_1.8-34                      
+ [95] later_1.2.0                       TFBSTools_1.26.0                 
+ [97] tidyr_1.1.3                       DBI_1.1.1                        
+ [99] MASS_7.3-53.1                     readr_1.4.0                      
+[101] R.methodsS3_1.8.1                 igraph_1.2.6                     
+[103] pkgconfig_2.0.3                   GenomicAlignments_1.24.0         
+[105] TFMPvalue_0.0.8                   plotly_4.9.3                     
+[107] spatstat.sparse_2.0-0             annotate_1.66.0                  
+[109] bslib_0.2.4                       DirichletMultinomial_1.30.0      
+[111] XVector_0.28.0                    stringr_1.4.0                    
+[113] digest_0.6.27                     sctransform_0.3.2                
+[115] RcppAnnoy_0.0.18                  pracma_2.3.3                     
+[117] CNEr_1.24.0                       spatstat.data_2.0-0              
+[119] Biostrings_2.56.0                 rmarkdown_2.7                    
+[121] leiden_0.3.7                      uwot_0.1.10                      
+[123] Rsamtools_2.4.0                   gtools_3.8.2                     
+[125] rjson_0.2.20                      lifecycle_1.0.0                  
+[127] nlme_3.1-152                      jsonlite_1.7.2                   
+[129] Rhdf5lib_1.10.1                   viridisLite_0.3.0                
+[131] BSgenome_1.56.0                   fansi_0.4.2                      
+[133] pillar_1.5.1                      lattice_0.20-41                  
+[135] KEGGREST_1.28.0                   fastmap_1.1.0                    
+[137] httr_1.4.2                        survival_3.2-10                  
+[139] GO.db_3.11.4                      glue_1.4.2                       
+[141] png_0.1-7                         bit_4.0.4                        
+[143] sass_0.3.1                        stringi_1.5.3                    
+[145] blob_1.2.1                        caTools_1.18.1                   
+[147] memoise_2.0.0                     dplyr_1.0.5                      
+[149] irlba_2.3.3                       future.apply_1.7.0               
+
+
+------- Log Info
+
+
+2021-09-02 19:45:11 : addPeak2GeneLinks Input-Parameters, Class = list
+
+addPeak2GeneLinks Input-Parameters$ArchRProj: length = 1
+
+addPeak2GeneLinks Input-Parameters$reducedDims: length = 1
+[1] "IterativeLSI"
+
+
+addPeak2GeneLinks Input-Parameters$useMatrix: length = 1
+[1] "GeneIntegrationMatrix"
+
+
+addPeak2GeneLinks Input-Parameters$dimsToUse: length = 30
+[1] 1 2 3 4 5 6
+
+
+addPeak2GeneLinks Input-Parameters$scaleDims: length = 0
+NULL
+
+
+addPeak2GeneLinks Input-Parameters$corCutOff: length = 1
+[1] 0.75
+
+
+addPeak2GeneLinks Input-Parameters$cellsToUse: length = 0
+NULL
+
+
+addPeak2GeneLinks Input-Parameters$k: length = 1
+[1] 100
+
+
+addPeak2GeneLinks Input-Parameters$knnIteration: length = 1
+[1] 500
+
+
+addPeak2GeneLinks Input-Parameters$overlapCutoff: length = 1
+[1] 0.8
+
+
+addPeak2GeneLinks Input-Parameters$maxDist: length = 1
+[1] 250000
+
+
+addPeak2GeneLinks Input-Parameters$scaleTo: length = 1
+[1] 10000
+
+
+addPeak2GeneLinks Input-Parameters$log2Norm: length = 1
+[1] TRUE
+
+
+addPeak2GeneLinks Input-Parameters$predictionCutoff: length = 1
+[1] 0.4
+
+
+addPeak2GeneLinks Input-Parameters$addEmpiricalPval: length = 1
+[1] FALSE
+
+
+addPeak2GeneLinks Input-Parameters$seed: length = 1
+[1] 1
+
+
+addPeak2GeneLinks Input-Parameters$threads: length = 1
+[1] 2
+
+
+addPeak2GeneLinks Input-Parameters$verbose: length = 1
+[1] TRUE
+
+
+addPeak2GeneLinks Input-Parameters$logFile: length = 1
+[1] "ArchRLogs/ArchR-addPeak2GeneLinks-d47a406d66d4-Date-2021-09-02_Time-19-45-11.log"
+
+
+2021-09-02 19:45:11 : Getting Available Matrices, 0.001 mins elapsed.
+2021-09-02 19:45:11 : Filtered Low Prediction Score Cells (1260 of 10250, 0.123), 0.003 mins elapsed.
+
+2021-09-02 19:45:11 : peakSet, Class = GRanges
+GRanges object with 148941 ranges and 13 metadata columns:
+            seqnames              ranges strand |     score replicateScoreQuantile
+               <Rle>           <IRanges>  <Rle> | <numeric>              <numeric>
+        GMP     chr1       752510-753010      * |  12.39600                  0.832
+      CD4.N     chr1       757872-758372      * |   5.87004                  0.832
+          B     chr1       762690-763190      * |  45.65850                  0.919
+        GMP     chr1       773671-774171      * |   4.91703                  0.509
+      CD4.M     chr1       779906-780406      * |   8.45160                  0.394
+        ...      ...                 ...    ... .       ...                    ...
+     CD8.CM     chrX 154807254-154807754      * |   4.78155                  0.402
+        GMP     chrX 154842034-154842534      * |  12.39600                  0.832
+        GMP     chrX 154861993-154862493      * |   2.11245                  0.241
+  Erythroid     chrX 154912372-154912872      * |   6.20682                  0.300
+        GMP     chrX 154996993-154997493      * |   4.91703                  0.509
+            groupScoreQuantile Reproducibility                  GroupReplicate distToGeneStart
+                     <numeric>       <numeric>                     <character>       <integer>
+        GMP              0.638               2            GMP._.scATAC_BMMC_R1           10141
+      CD4.N              0.535               2                    CD4.N._.Rep2            4779
+          B              0.823               2              B._.scATAC_PBMC_R1              30
+        GMP              0.199               2       GMP._.scATAC_CD34_BMMC_R1           10949
+      CD4.M              0.085               2          CD4.M._.scATAC_PBMC_R1           17184
+        ...                ...             ...                             ...             ...
+     CD8.CM              0.129               2         CD8.CM._.scATAC_BMMC_R1           35117
+        GMP              0.638               2            GMP._.scATAC_BMMC_R1             337
+        GMP              0.046               2            GMP._.scATAC_BMMC_R1           19620
+  Erythroid              0.087               2 Erythroid._.scATAC_CD34_BMMC_R1           69999
+        GMP              0.199               2       GMP._.scATAC_CD34_BMMC_R1          154620
+            nearestGene    peakType distToTSS  nearestTSS        GC       idx         N
+            <character> <character> <integer> <character> <numeric> <integer> <numeric>
+        GMP   LINC00115      Distal     10141  uc001aau.3    0.4850         1         0
+      CD4.N   LINC00115      Distal      4779  uc001aau.3    0.5609         2         0
+          B   LINC01128    Promoter        30  uc021oeh.1    0.6966         3         0
+        GMP   LINC01128    Intronic     10742  uc021oeh.1    0.4571         4         0
+      CD4.M   LINC01128    Intronic     16977  uc021oeh.1    0.4850         5         0
+        ...         ...         ...       ...         ...       ...       ...       ...
+     CD8.CM       TMLHE    Intronic     35117  uc004cin.3    0.4990      3561         0
+        GMP       TMLHE    Intronic       337  uc004cin.3    0.6148      3562         0
+        GMP       TMLHE      Distal     19620  uc004cin.3    0.4271      3563         0
+  Erythroid       TMLHE      Distal     69999  uc004cin.3    0.3653      3564         0
+        GMP       TMLHE      Distal       207  uc004cin.3    0.5449      3565         0
+  -------
+  seqinfo: 23 sequences from an unspecified genome; no seqlengths
+
+
+2021-09-02 19:45:11 : geneStart, Class = GRanges
+GRanges object with 18601 ranges and 2 metadata columns:
+          seqnames    ranges strand |      name     idx
+             <Rle> <IRanges>  <Rle> |   <array> <array>
+      [1]     chr1     69091      * |     OR4F5       1
+      [2]     chr1    762902      * | LINC00115       2
+      [3]     chr1    812182      * |    FAM41C       3
+      [4]     chr1    860530      * |    SAMD11       4
+      [5]     chr1    894679      * |     NOC2L       5
+      ...      ...       ...    ... .       ...     ...
+  [18597]     chrX 154299695      * |     BRCC3     708
+  [18598]     chrX 154444701      * |      VBP1     709
+  [18599]     chrX 154493852      * |    RAB39B     710
+  [18600]     chrX 154563986      * |     CLIC2     711
+  [18601]     chrX 154842622      * |     TMLHE     712
+  -------
+  seqinfo: 23 sequences from an unspecified genome; no seqlengths
+
+2021-09-02 19:45:11 : Computing KNN, 0.009 mins elapsed.
+2021-09-02 19:45:12 : Identifying Non-Overlapping KNN pairs, 0.012 mins elapsed.
+2021-09-02 19:45:17 : Identified 489 Groupings!, 0.096 mins elapsed.
+2021-09-02 19:45:17 : Getting Group RNA Matrix, 0.096 mins elapsed.
+
+2021-09-02 19:46:25 : groupMatRNA, Class = matrix
+ 
+2021-09-02 19:46:25 : groupMatRNA, Class = array
+        [,1]      [,2]        [,3]       [,4]      [,5]
+f1  0.000000  0.000000  0.00000000  0.0000000  0.000000
+f2 13.270670  6.576803  0.79863501  2.1707018  7.241771
+f3  1.767857  3.568851  8.20876971  0.4545608  4.193998
+f4  0.000000  0.000000  0.04197821  0.0000000  0.000000
+f5 19.522679 60.311929 53.54736954 26.1062361 64.033795
+
+groupMatRNA: nRows = 18601, nCols = 489
+
+2021-09-02 19:46:25 : Getting Group ATAC Matrix, 1.231 mins elapsed.
+
+2021-09-02 19:47:23 : groupMatATAC, Class = matrix
+ 
+2021-09-02 19:47:23 : groupMatATAC, Class = array
+   [,1] [,2] [,3] [,4] [,5]
+f1    4    3    0    2    0
+f2    0    0    0    0    0
+f3   10   30    6   14   24
+f4    0    1    1    0    0
+f5    0    7    0    0    0
+
+groupMatATAC: nRows = 148941, nCols = 489
+
+2021-09-02 19:47:23 : Normalizing Group Matrices, 2.209 mins elapsed.
+
+2021-09-02 19:47:27 : seRNA, Class = RangedSummarizedExperiment
+class: RangedSummarizedExperiment 
+dim: 18601 489 
+metadata(1): KNNList
+assays(2): RNA RawRNA
+rownames(18601): f1 f2 ... f18600 f18601
+rowData names(2): name idx
+colnames: NULL
+colData names(0):
+
+
+2021-09-02 19:47:27 : seATAC, Class = RangedSummarizedExperiment
+class: RangedSummarizedExperiment 
+dim: 148941 489 
+metadata(1): KNNList
+assays(2): ATAC RawATAC
+rownames(148941): f1 f2 ... f148940 f148941
+rowData names(13): score replicateScoreQuantile ... idx N
+colnames: NULL
+colData names(0):
+
+2021-09-02 19:47:28 : Finding Peak Gene Pairings, 2.284 mins elapsed.
+2021-09-02 19:47:28 : Computing Correlations, 2.292 mins elapsed.
+2021-09-02 19:47:42 : Completed Peak2Gene Correlations!, 2.514 mins elapsed.
+
+------- Completed
+
+End Time : 2021-09-02 19:47:42
+Elapsed Time Minutes = 2.52067315181096
+Elapsed Time Hours = 0.0420112833049562
+
+-------
+
+
+
