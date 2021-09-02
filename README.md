@@ -5,6 +5,7 @@
  
  ## Downsampled tutorial data
  We utilized the tutorial data downloaded using the getTutorialData()function for Shiny instance of ShinyArchR.UiO. The downsampled tutorial data of hematopoietic cells approximately 0.5 GB in size is used for the analysis with the steps described in full manual of ArchR toolkit (https://www.archrproject.com/bookdown/index.html). 
+## Downsampled tutorial data
 
 ***
 ## Salient Features
@@ -122,7 +123,7 @@ Navigate to the folder containing ShinyArchRUiO.
 * Visualize heatmaps for Peak2Genelinks top markers in scATAC-seq and scRNA-seq.  
 
 **For a more detailed description, Please see [supplementary information](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2.supplementary-material).**
-
+**General introduction and ShinyArchR.UiO setup, Please see [Video tutorial](https://youtu.be/LvLEHx3fnPQ).**
 ## Frequently Asked Questions.  
 
 Q: Which version of R programming is required?
@@ -137,9 +138,25 @@ Q: How to set reference genome other than hg19 ?
 Q: How much memory/storage space does ShinyArchR.UiO and the Shiny app consume?
 * The Shiny app itself is less memory intensive and is meant to be a heavy-duty app where multiple users can access the app at the same time. The memory required is dependent on the saved project files from ArchR. Simultaneously, ArchR employs Arrow files, an HDF5 file format, to store massive single-cell chromatin accessibility data on disk/ user’s server. Initial setup of ShinyArchr.UiO is computation-intensive.  This includes steps for computing marker genes for peak2genelinks analysis and other plots. A typical laptop with 8GB RAM can handle datasets from estimated 10k cells while 16GB RAM machines can handle around 20k-50k cells. Initialization of the app takes approximately 5-10 minutes for a downsampled example tutorial dataset of hematopoietic cells utilized in the ArchR manual.
 
-
 Q: If you are getting *502 Bad Gateway* error on demo [ShinyArchR.UiO web interface](https://cancell.medisin.uio.no/ShinyArchR.UiO)? 
 * Perform a hard refresh in your browser. Clear your browser cache and delete cookies. Your browser may be holding on to certain files that were saved once you visited the website with a 502 error. Please wait for 5-10 minutes,  This could be due to higher load on our server side , please let us know if the error still persists.  
+
+Q: Specification of ShinyArchR.UiO server ?
+*
+```r 
+RHEL system and we use SElinux, nginx and SSL
+Model name:	Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz
+Architecture:	 x86_64
+CPU op-mode(s):	32-bit, 64-bit
+CPU(s):	4
+CPU family:	6
+RAM:	31Gi
+Icon name:	computer-vm
+Virtualization:	vmware
+Operating System:	Red Hat Enterprise Linux 8.4 (Ootpa)
+CPE OS Name:	cpe:/o:redhat:enterprise_linux:8.4:GA
+Kernel:	Linux 4.18.0-305.el8.x86_64
+```
 
 ***
 ## Links and Citation info
