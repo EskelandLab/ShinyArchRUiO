@@ -28,22 +28,39 @@ umap_panel <- tabPanel(id="umap_panel",
         selected = "Sample"
       ),
       
-      hr(),
-      downloadButton(outputId = "download_UMAP1", label = "Download UMAP 1"),
-      br(),
-      br(),
-      splitLayout(cellWidths = c("50%","50%"),
-                  numericInput("UMAP1_plot_width", "Width", min = 0, max = 250, value = 8),
-                  numericInput("UMAP1_plot_height", "Height", min = 0, max = 250, value = 12)
-      ),
+      hr(style = "border-color: grey"),
       
-      downloadButton(outputId = "download_UMAP2", label = "Download UMAP 2"),
-      br(),
-      br(),
-      splitLayout(cellWidths = c("50%","50%"),
+      splitLayout(cellWidths = c("30%","30%","40%"),
+                  numericInput("UMAP1_plot_width", "Width", min = 0, max = 250, value = 8),
+                  numericInput("UMAP1_plot_height", "Height", min = 0, max = 250, value = 12),
+                  selectizeInput(
+                    'plot_choice_download_UMAP1',
+                    label = "Format",
+                    choices = c(".pdf",".png",".tiff"),
+                    selected = ".pdf"),    
+                  tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
+                  ),
+      
+      downloadButton(outputId = "download_UMAP1", label = "Download UMAP 1"),
+      
+      hr(style = "border-color: grey"),
+      
+      splitLayout(cellWidths = c("30%","30%","40%"),
                   numericInput("UMAP2_plot_width", "Width", min = 0, max = 250, value = 8),
-                  numericInput("UMAP2_plot_height", "Height", min = 0, max = 250, value = 12)
-      )
+                  numericInput("UMAP2_plot_height", "Height", min = 0, max = 250, value = 12),
+                  selectizeInput(
+                    'plot_choice_download_UMAP2',
+                    label = "Format",
+                    choices = c(".pdf",".png",".tiff"),
+                    selected = ".pdf"),    
+                  tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
+      ),
+      downloadButton(outputId = "download_UMAP2", label = "Download UMAP 2"),
+      
     ),
 
 mainPanel(
@@ -96,19 +113,28 @@ scATACbrowser_panel <- tabPanel(
           numericInput("tile_size", "TileSize:", min = 10, max = 5000, value = 250),
           numericInput("ymax", "Y-Max (0,1):", min = 0, max = 1, value = 0.99)
         ),
-        hr(),
-        downloadButton(outputId = "down", label = "Download"),
-        br(),
-        br(),
-        splitLayout(cellWidths = c("50%","50%"),
+      
+      hr(style = "border-color: grey"),
+
+        splitLayout(cellWidths = c("30%","30%","40%"),
           numericInput("plot_width", "Width", min = 0, max = 250, value = 8),
-          numericInput("plot_height", "Height", min = 0, max = 250, value = 12)
-        )
+          numericInput("plot_height", "Height", min = 0, max = 250, value = 12),
+          selectizeInput(
+            'plot_choice_download_peakBrowser',
+            label = "Format",
+            choices = c(".pdf",".png",".tiff"),
+            selected = ".pdf"),    
+          tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
+        ),
+      downloadButton(outputId = "down", label = "Download"),
+      
     ),
       
     mainPanel(fluidRow(h5("Peak browser of scATAC-seq clusters"
                            )),
-    fluidRow(helpText("Users can view and compare the single-cell chromatin accessibility data in scalable peak browser view.", style = "font-family: 'Helvetica Now Display Bold'; font-si20pt"),
+    fluidRow(helpText("Users can view and compare the single-cell chromatin accessibility data in scalable peak browser view along with co-accessibility of peaks on scATAC-seq modality.", style = "font-family: 'Helvetica Now Display Bold'; font-si20pt"),
     ),
             plotOutput("browser_atacClusters")
         )
@@ -136,8 +162,6 @@ peak2gl_panel <- tabPanel(
         selected = sort(gene_names)[1]
       ),
 
-      
-
       sliderInput("range_1", "Distance From Center (kb):", min = -250, max = 250, value = c(-50,50)),
         splitLayout(cellWidths = c("50%","50%"),
           numericInput("range_min_1", "Distance (-kb):", min = -250, max = 250, value = -50),
@@ -147,14 +171,24 @@ peak2gl_panel <- tabPanel(
           numericInput("tile_size_1", "TileSize:", min = 10, max = 5000, value = 250),
           numericInput("ymax_1", "Y-Max (0,1):", min = 0, max = 1, value = 0.99)
         ),
-        hr(),
-        downloadButton(outputId = "down_1", label = "Download"),
-        br(),
-        br(),
-        splitLayout(cellWidths = c("50%","50%"),
+      
+      hr(style = "border-color: grey"),
+
+        splitLayout(cellWidths = c("30%","30%","40%"),
           numericInput("plot_width_1", "Width", min = 0, max = 250, value = 8),
-          numericInput("plot_height_1", "Height", min = 0, max = 250, value = 12)
-        )
+          numericInput("plot_height_1", "Height", min = 0, max = 250, value = 12),
+          selectizeInput(
+            'plot_choice_download_peak2GeneLink',
+            label = "Format",
+            choices = c(".pdf",".png",".tiff"),
+            selected = ".pdf"),    
+          tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
+        ),
+      
+      downloadButton(outputId = "down_1", label = "Download"),
+      
     ),
       
     mainPanel
@@ -182,39 +216,54 @@ feature_comparison_panel <- tabPanel(
     selectizeInput(
       'matrix_forComparison',
       label = 'Matrix Type',
-      choices = c("GeneScoreMatrix","GeneIntegrationMatrix"),
+      choices = c("GeneScoreMatrix","GeneIntegrationMatrix","MotifMatrix"),
       selected = "GeneScoreMatrix"
     ),
     
     selectizeInput(
       'gene_forComparison_1',
       label = 'Feature Name 1',
-      choices = sort(gene_names),
-      selected = sort(gene_names)[1]
+      choices = "",
+      selected = NULL
     ),
     selectizeInput(
       'gene_forComparison_2',
       label = 'Feature Name 2',
-      choices = sort(gene_names),
-      selected = sort(gene_names)[2]
+      choices = "",
+      selected = NULL
     ),
     
-    hr(),
-    downloadButton(outputId = "download_feature_comparison", label = "Download"),
-    br(),
-    br(),
-    splitLayout(cellWidths = c("50%","50%"),
+    hr(style = "border-color: grey"),
+    splitLayout(cellWidths = c("30%","30%","40%"),
                 numericInput("gene_Comparison_plot_width", "Width", min = 0, max = 250, value = 8),
-                numericInput("gene_Comparison_plot_height", "Height", min = 0, max = 250, value = 12)
-    )
+                numericInput("gene_Comparison_plot_height", "Height", min = 0, max = 250, value = 12),
+                selectizeInput(
+                  'plot_choice_download_feature_comparison',
+                  label = "Format",
+                  choices = c(".pdf",".png",".tiff"),
+                  selected = ".pdf"),    
+                tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
+    ),
+    downloadButton(outputId = "download_feature_comparison", label = "Download"),
+    
+    hr(style = "border-color: grey"),
+    selectizeInput(
+      'motif_for_motifPos',
+      label = 'Download Motif Position',
+      choices = sort(motifMatrix_dropdown),
+      selected = sort(motifMatrix_dropdown)[1]
+    ),
+    downloadButton(outputId = "download_motifPos", label = "Download"),
+    
   ),
   
   mainPanel
     (
       fluidRow(h5("Feature of interest : Dimensionality Reduction UMAPs"
     )),
-    fluidRow(helpText("Users can view and compare side-by-side UMAPs representing features of interest in GeneScoreMatrix
-or GeneIntegrationMatrix.", style = "font-family: 'Helvetica Now Display Bold'; font-si20pt"),
+    fluidRow(helpText("Users can view and compare side-by-side UMAPs representing features of interest in GeneScoreMatrix, GeneIntegrationMatrix or MotifMatrix with a representative sequence logo. Download list of Motif Positions. ", style = "font-family: 'Helvetica Now Display Bold'; font-si20pt"),
     ),
     
     plotOutput("feature_comparison"))
@@ -248,14 +297,20 @@ motif_Footprinting_panel<- tabPanel(
       selected = 'Subtract'
      ),
 
-    hr(),
-    downloadButton(outputId = "motif_down_1", label = "Download"),
-    br(),
-    br(),
-    splitLayout(cellWidths = c("50%","50%"),
+    splitLayout(cellWidths = c("30%","30%","40"),
                 numericInput("motif_plot_width_1", "Width", min = 0, max = 250, value = 8),
-                numericInput("motif_plot_height_1", "Height", min = 0, max = 250, value = 12)
-    )
+                numericInput("motif_plot_height_1", "Height", min = 0, max = 250, value = 12),
+                selectizeInput(
+                  'plot_choice_download_motif_down_1',
+                  label = "Format",
+                  choices = c(".pdf",".png",".tiff"),
+                  selected = ".pdf"),    
+                tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
+    ),
+    hr(style = "border-color: grey"),
+    downloadButton(outputId = "motif_down_1", label = "Download"),
   ),
 
   mainPanel(
@@ -287,12 +342,23 @@ traj_heatmap_panel <- tabPanel(
       selected = "GeneScoreMatrix"
     ),
     
-    splitLayout(cellWidths = c("50%","50%"),
+    splitLayout(cellWidths = c("30%","30%","40%"),
                 numericInput("matrix_forTraj_width", "Width", min = 0, max = 250, value = 8),
-                numericInput("matrix_forTraj_height", "Height", min = 0, max = 250, value = 12)
+                numericInput("matrix_forTraj_height", "Height", min = 0, max = 250, value = 12),
+                selectizeInput(
+                  'plot_choice_down_heatmap_traj1',
+                  label = "Format",
+                  choices = c(".pdf",".png",".tiff"),
+                  selected = ".pdf"),    
+                tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
     ),
     
     downloadButton(outputId = "down_heatmap_traj1", label = "Download"),
+    
+    hr(style = "border-color: grey"),
+    
     selectizeInput(
       'matrix_forTraj2',
       label = 'Matrix Type',
@@ -300,9 +366,17 @@ traj_heatmap_panel <- tabPanel(
       selected = "GeneIntegrationMatrix"
     ),
     
-    splitLayout(cellWidths = c("50%","50%"),
+    splitLayout(cellWidths = c("30%","30%","40%"),
                 numericInput("matrix_forTraj_width2", "Width", min = 0, max = 250, value = 8),
-                numericInput("matrix_forTraj_height2", "Height", min = 0, max = 250, value = 12)
+                numericInput("matrix_forTraj_height2", "Height", min = 0, max = 250, value = 12),
+                selectizeInput(
+                  'plot_choice_down_heatmap_traj2',
+                  label = "Format",
+                  choices = c(".pdf",".png",".tiff"),
+                  selected = ".pdf"),    
+                tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
     ),
     downloadButton(outputId = "down_heatmap_traj2", label = "Download"),
     
@@ -336,14 +410,21 @@ peak2GLheatmap_panel <- tabPanel(
     width = 3,
     h4(''),
     hr(style = "border-color: grey"),
-  hr(),
   actionButton(inputId = "heatmap_peak2gl", label = "Plot Heatmap", icon = icon("play-circle")),
-  br(),
-  br(),
-  splitLayout(cellWidths = c("50%","50%"),
+  
+  hr(style = "border-color: grey"),
+  splitLayout(cellWidths = c("30%","30%","40%"),
               
               numericInput("p2g_plot_width_1", "Width", min = 0, max = 250, value = 8),
-              numericInput("p2g_plot_height_1", "Height", min = 0, max = 250, value = 12)
+              numericInput("p2g_plot_height_1", "Height", min = 0, max = 250, value = 12),
+              selectizeInput(
+                'plot_choice_down_heatmap_p2g',
+                label = "Format",
+                choices = c(".pdf",".png",".tiff"),
+                selected = ".pdf"),    
+              tags$head(tags$style(HTML("
+                              .shiny-split-layout > div {
+                                overflow: visible;}")))
   ),
   downloadButton(outputId = "heatmap_p2g", label = "Download"),
   
@@ -422,7 +503,7 @@ navbarPage(
   tags$head(tags$style(".shiny-output-error{color: grey;}"))###showing error in grey color
 ),
 
-tags$footer(HTML("<p><i>This webpage was made using</i> <a href='https://github.com/EskelandLab/ShinyArchRUiO' target=\"_blank\">ShinyArchr.UiO</a>.</p>"),
+tags$footer(HTML("<p><i>Webpage generated with</i> <a href='https://github.com/EskelandLab/ShinyArchRUiO' target=\"_blank\">ShinyArchr.UiO</a>.</p>"),
             align = "left", style = "
               position:relative;
               bottom:0;

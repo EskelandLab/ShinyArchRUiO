@@ -16,7 +16,7 @@
 
 ####
 packages <- c("Seurat","shinycssloaders","hexbin","magick",
-             "gridExtra", "grid","patchwork","shinybusy","ArchR")
+             "gridExtra", "grid","patchwork","shinybusy","ArchR","ggseqlogo")
 
 ## Now load or install&load all
 package.check <- lapply(
@@ -35,7 +35,7 @@ options(repos = BiocManager::repositories())
 #                        Setting up ARCHR 
 #####################################################################
 #specify desired number of threads , If required
-addArchRThreads(threads = 6) 
+addArchRThreads(threads = 4) 
 #specify genome version. Default hg19 set
 addArchRGenome("hg19")
 set.seed(1)
@@ -47,10 +47,11 @@ set.seed(1)
 ##Load the Saved projects folders from ArchR analysis as saved in ArchR full manual using  saveArchRProject() function
 #Load Saved-project folders path e.g 'Save-ArchRProject2'<- loadArchRProject("path/to/your/Save-ArchRProject2"). Save project also after trajectory analysis e.g as Save-ArchRProject5
 #Please see ArchR  full manual for saveArchRProject() function or use the ArchR.RMD for your analysis provided with the source code which follows the steps illustrated in ArchR full manual. Save-ArchRProject5
+# 
+savedArchRProject1 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme2/")
+savedArchRProject2 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme3/")
+savedArchRProject3 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme5/")
 
-savedArchRProject1 <- loadArchRProject("~/Save-ProjHeme2/",showLogo = FALSE)
-savedArchRProject2 <- loadArchRProject("~/Save-ProjHeme3/",showLogo = FALSE)
-savedArchRProject3 <- loadArchRProject("~/Save-ProjHeme5/",showLogo = FALSE)
 
 ########################################################################
 #                         Add Metadata of Trajectory
@@ -64,9 +65,9 @@ trajectory_name<-"LymphoidU"
 
 cluster_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
-  baseSize=12, 
-  colorBy = "cellColData", 
-  name = "Clusters", 
+  baseSize=12,
+  colorBy = "cellColData",
+  name = "Clusters",
   embedding = "UMAP",
   rastr = FALSE,
   size=0.5,
@@ -76,8 +77,8 @@ cluster_umap <- plotEmbedding(
 sample_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
   baseSize=12,
-  colorBy = "cellColData", 
-  name = "Sample", 
+  colorBy = "cellColData",
+  name = "Sample",
   embedding = "UMAP",
   rastr = FALSE,
   size=0.5
@@ -90,7 +91,7 @@ unconstrained_umap <- plotEmbedding(
   colorBy = "cellColData",
   name = "predictedGroup_Un",
   baseSize=12,
- 
+
   rastr = FALSE,
   size=0.5
   )+ggtitle("UMAP: unconstrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
@@ -107,15 +108,15 @@ constrained_umap <- plotEmbedding(
 
 
 constrained_remapped_umap <- plotEmbedding(
-  savedArchRProject2, 
-  colorBy = "cellColData", 
+  savedArchRProject2,
+  colorBy = "cellColData",
   name = "Clusters2",
   rastr = FALSE,
   )+ggtitle("UMAP: Constrained remapped clusters")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
 
 umaps<-list("Clusters"= cluster_umap,"Sample"= sample_umap,"Unconstrained"=unconstrained_umap,"Constrained"=constrained_umap,"Constrained remap"=constrained_remapped_umap)
 ########################################################################
-#                         MarkerGenes 
+#                         MarkerGenes
 ########################################################################
 #please check FDR Threshold and Log2FC  values and use it accordingly.
 #for more details please visit: https://www.archrproject.com/
@@ -137,21 +138,41 @@ for (cn in names(markerList_p1)[-1]){
 }
 
 ########################################################################
+#                    motifs for feature comparison panel
+########################################################################
+motifMatrix_forShiny=getMatrixFromProject(
+  ArchRProj = savedArchRProject3,
+  useMatrix = "MotifMatrix",
+  useSeqnames = NULL,
+  verbose = FALSE,
+  binarize = FALSE,
+  threads = getArchRThreads()
+)
+
+motifMatrix_dropdown=sapply(strsplit(motifMatrix_forShiny@NAMES, "_"), "[", 1)
+
+#get PWM of motifs and convert them to probability matrix for seqlogo:Utilized function from utils.R of https://github.com/GreenleafLab/ChrAccR
+PWMatrixToProbMatrix <- function(x){
+  if (class(x) != "PWMatrix") stop("x must be a TFBSTools::PWMatrix object")
+  (2^as(x, "matrix"))*TFBSTools::bg(x)/sum(TFBSTools::bg(x))
+}
+
+########################################################################
 #                         Peak2Genelinks
 ########################################################################
-# Plot of Heatmap of Peak To Gene Links 
-#for more details please visits section 15.3.2: https://www.archrproject.com/ 
+# Plot of Heatmap of Peak To Gene Links
+#for more details please visits section 15.3.2: https://www.archrproject.com/
 savedArchRProject3 <- addPeak2GeneLinks(
 ArchRProj <- savedArchRProject3,
 reducedDims <- "IterativeLSI"
    )
 
 ########################################################################
-#                         motif footprinting 
+#                         motif footprinting
 ########################################################################
 motifPositions=getPositions(savedArchRProject3)
 ########################################################################
-#                       Heatmap:Trajectory and peak2genelink 
+#                       Heatmap:Trajectory and peak2genelink
 ########################################################################
 p_heatmap_peak_to_gene <- plotPeak2GeneHeatmap(ArchRProj = savedArchRProject3, groupBy = "Clusters2")
 
@@ -169,4 +190,8 @@ p_peakMatrix_traj <- plotTrajectoryHeatmap(trajPM, pal = paletteContinuous(set =
 ########################################################################
 #                               End
 ########################################################################
+# writeLines(capture.output(sessionInfo()), "/Users/akshay/OneDrive - Universitaet Bern/PhD/Projetcs-extra/archR_1.0/Github/ShinyArchRUiO.V1.1/sessionInfo.txt")
+# packages_in_use <- c( names(sessionInfo()$basePkgs), names( sessionInfo()$loadedOnly ))
+# knitr::write_bib(packages_in_use, "/Users/akshay/OneDrive - Universitaet Bern/PhD/Projetcs-extra/archR_1.0/Github/ShinyArchRUiO.V1.1/sessionInfo.bib")
+
 
