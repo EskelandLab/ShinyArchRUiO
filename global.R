@@ -48,9 +48,9 @@ set.seed(1)
 #Load Saved-project folders path e.g 'Save-ArchRProject2'<- loadArchRProject("path/to/your/Save-ArchRProject2"). Save project also after trajectory analysis e.g as Save-ArchRProject5
 #Please see ArchR  full manual for saveArchRProject() function or use the ArchR.RMD for your analysis provided with the source code which follows the steps illustrated in ArchR full manual. Save-ArchRProject5
 # 
-savedArchRProject1 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme2/")
-savedArchRProject2 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme3/")
-savedArchRProject3 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme5/")
+savedArchRProject1 <- loadArchRProject("~/Save-ProjHeme2/")
+savedArchRProject2 <- loadArchRProject("~/Save-ProjHeme3/")
+savedArchRProject3 <- loadArchRProject("~/Save-ProjHeme5/")
 
 
 ########################################################################
@@ -190,8 +190,5 @@ p_peakMatrix_traj <- plotTrajectoryHeatmap(trajPM, pal = paletteContinuous(set =
 ########################################################################
 #                               End
 ########################################################################
-# writeLines(capture.output(sessionInfo()), "/Users/akshay/OneDrive - Universitaet Bern/PhD/Projetcs-extra/archR_1.0/Github/ShinyArchRUiO.V1.1/sessionInfo.txt")
-# packages_in_use <- c( names(sessionInfo()$basePkgs), names( sessionInfo()$loadedOnly ))
-# knitr::write_bib(packages_in_use, "/Users/akshay/OneDrive - Universitaet Bern/PhD/Projetcs-extra/archR_1.0/Github/ShinyArchRUiO.V1.1/sessionInfo.bib")
 
 
