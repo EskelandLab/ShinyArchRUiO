@@ -361,6 +361,7 @@ shinyServer <- function(input,output, session){
         gene1_plot=plotEmbedding(
           ArchRProj = savedArchRProject3,
           colorBy = "GeneIntegrationMatrix",
+          continuousSet = "SolarExtra",
           name = isolate(input$gene_forComparison_1),
           embedding = "UMAP",
           imputeWeights = getImputeWeights(savedArchRProject3),
@@ -370,6 +371,7 @@ shinyServer <- function(input,output, session){
         gene2_plot=plotEmbedding(
           ArchRProj = savedArchRProject3,
           colorBy = "GeneIntegrationMatrix",
+          continuousSet = "SolarExtra",
           name = isolate(input$gene_forComparison_2),
           embedding = "UMAP",
           imputeWeights = getImputeWeights(savedArchRProject3),
@@ -490,6 +492,7 @@ shinyServer <- function(input,output, session){
           gene1_plot=plotEmbedding(
             ArchRProj = savedArchRProject3,
             colorBy = "GeneIntegrationMatrix",
+            continuousSet = "SolarExtra",
             name = isolate(input$gene_forComparison_1),
             embedding = "UMAP",
             imputeWeights = getImputeWeights(savedArchRProject3),
@@ -499,6 +502,7 @@ shinyServer <- function(input,output, session){
           gene2_plot=plotEmbedding(
             ArchRProj = savedArchRProject3,
             colorBy = "GeneIntegrationMatrix",
+            continuousSet = "SolarExtra",
             name = isolate(input$gene_forComparison_2),
             embedding = "UMAP",
             imputeWeights = getImputeWeights(savedArchRProject3),
