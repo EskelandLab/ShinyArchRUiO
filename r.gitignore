@@ -5,6 +5,8 @@
 # Session Data files
 .RData
 
+.ArchRLogs/
+
 # User-specific files
 .Ruserdata
 
