@@ -161,6 +161,6 @@ Kernel:	Linux 4.18.0-305.el8.x86_64
 ***
 ## Links and Citation info
 For general introduction and setting up of ShinyArchR.UiO locally, Please see this **[Video tutorial](https://www.youtube.com/watch?v=S3ywWFYXaVA).**
-
-Please cite our **[BiorXiV preprint](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v1)**
+Please cite article published in **[ OUP Bioinformatics](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)** 
+and **[BiorXiV preprint](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2)**
 ***
