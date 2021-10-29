@@ -158,10 +158,17 @@ Kernel:	Linux 4.18.0-305.el8.x86_64
 ```
 
 ***
-## Links and Citation info
-For general introduction and setting up of ShinyArchR.UiO locally, Please see this **[Video tutorial](https://www.youtube.com/watch?v=S3ywWFYXaVA).**
+## Links
+For general introduction and setting up of ShinyArchR.UiO locally. 
+
+Please watch ShinyArchR.UiO's **[Introduction video tutorial](https://youtu.be/P-OD2HYkVeI).**.  
 
 
+Please watch  ShinyArchR.UiO's **[Setup video tutorial](https://youtu.be/1-rjPr_krsM)**.  
+
+## Citations information
 Please cite **ShinyArchR.UiO** article published in **[ OUP Bioinformatics](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)**
 and **[BiorXiV preprint](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2).**
+
+Ankush Sharma, Akshay Akshay, Marie Rogne, Ragnhild Eskeland, ShinyArchR.UiO: user-friendly, integrative and open-source tool for visualization of single-cell ATAC-seq data using ArchR, Bioinformatics, 2021;, btab680, https://doi.org/10.1093/bioinformatics/btab680
 ***
