@@ -149,7 +149,8 @@ motifMatrix_forShiny=getMatrixFromProject(
   threads = getArchRThreads()
 )
 
-motifMatrix_dropdown=sapply(strsplit(motifMatrix_forShiny@NAMES, "_"), "[", 1)
+#motifMatrix_dropdown=sapply(strsplit(motifMatrix_forShiny@NAMES, "_"), "[", 1)
+ motifMatrix_dropdown=motifMatrix_forShiny@NAMES
 
 #get PWM of motifs and convert them to probability matrix for seqlogo:Utilized function from utils.R of https://github.com/GreenleafLab/ChrAccR
 PWMatrixToProbMatrix <- function(x){
