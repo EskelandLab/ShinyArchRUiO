@@ -400,12 +400,12 @@ shinyServer <- function(input,output, session){
         motif1=unlist(strsplit(getFeatures(savedArchRProject3, 
                                            select = paste(isolate(input$gene_forComparison_1), collapse="|"), 
                                            useMatrix = "MotifMatrix")[1],":"))[2]
-        motif1_seqlogo=ggseqlogo(motif_ProbMatrices[[motif1]],method = 'prob')
+        motif1_seqlogo=ggseqlogo(motif_ProbMatrices[[motif1]],method = 'prob')+ggtitle(motif1)
         
         motif2=unlist(strsplit(getFeatures(savedArchRProject3, 
                                            select = paste(isolate(input$gene_forComparison_2), collapse="|"), 
                                            useMatrix = "MotifMatrix")[1],":"))[2]
-        motif2_seqlogo=ggseqlogo(motif_ProbMatrices[[motif2]],method = 'prob')
+        motif2_seqlogo=ggseqlogo(motif_ProbMatrices[[motif2]],method = 'prob')+ggtitle(motif2)
         
         
         gene1_plot=grid.arrange(gene1_plot,motif1_seqlogo, ncol=1,nrow=2)
@@ -529,12 +529,12 @@ shinyServer <- function(input,output, session){
           motif1=unlist(strsplit(getFeatures(savedArchRProject3, 
                                       select = paste(isolate(input$gene_forComparison_1), collapse="|"), 
                                       useMatrix = "MotifMatrix")[1],":"))[2]
-          motif1_seqlogo=ggseqlogo(motif_ProbMatrices[[motif1]],method = 'prob')
+          motif1_seqlogo=ggseqlogo(motif_ProbMatrices[[motif1]],method = 'prob')+ggtitle(motif1)
           
           motif2=unlist(strsplit(getFeatures(savedArchRProject3, 
                                              select = paste(isolate(input$gene_forComparison_2), collapse="|"), 
                                              useMatrix = "MotifMatrix")[1],":"))[2]
-          motif2_seqlogo=ggseqlogo(motif_ProbMatrices[[motif2]],method = 'prob')
+          motif2_seqlogo=ggseqlogo(motif_ProbMatrices[[motif2]],method = 'prob')+ggtitle(motif2)
           
           
           gene1_plot=grid.arrange(gene1_plot,motif1_seqlogo, ncol=1,nrow=2)
