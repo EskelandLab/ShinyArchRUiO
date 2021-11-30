@@ -1,6 +1,6 @@
 # ShinyArchrUiO
   [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO)(ShinyArchR User interface Open)is an user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of  massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 2021](https://www.nature.com/articles/s41588-021-00790-6)).
-  Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website ([Sharma et al, Bioinformatics,2021](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)). 
+  Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website ([Sharma et al, Bioinformatics,2021](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)). Learn more from our videotutorial: https://youtu.be/gIUGgJWlWCw.
  
  ## Downsampled tutorial data
  We utilized the tutorial data downloaded using the **getTutorialData()** function for Shiny instance of ShinyArchR.UiO. The downsampled tutorial data of hematopoietic cells approximately 0.5 GB in size is used for the analysis with the steps described in full manual of ArchR toolkit (https://www.archrproject.com/bookdown/index.html). 
