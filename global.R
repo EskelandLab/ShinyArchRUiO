@@ -1,7 +1,7 @@
 #####################################################################
 #                 Setting up                                #        
 #####################################################################
-
+#updated:Feb102022
 # if (!requireNamespace("Shiny", quietly = TRUE)) install.packages("shiny")
 # ##Install ArchR,and its dependencies
 # #check for devtools
