@@ -45,3 +45,5 @@ docs/
 ArchRLogs/
 # translation temp files
 po/*~
+
+ArchRLogs/
