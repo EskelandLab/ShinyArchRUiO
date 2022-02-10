@@ -35,7 +35,7 @@ options(repos = BiocManager::repositories())
 #                        Setting up ARCHR 
 #####################################################################
 #specify desired number of threads , If required
-addArchRThreads(threads = 4) 
+addArchRThreads(threads = 1) 
 #specify genome version. Default hg19 set
 addArchRGenome("hg19")
 set.seed(1)
@@ -48,9 +48,9 @@ set.seed(1)
 #Load Saved-project folders path e.g 'Save-ArchRProject2'<- loadArchRProject("path/to/your/Save-ArchRProject2"). Save project also after trajectory analysis e.g as Save-ArchRProject5
 #Please see ArchR  full manual for saveArchRProject() function or use the ArchR.RMD for your analysis provided with the source code which follows the steps illustrated in ArchR full manual. Save-ArchRProject5
 # 
-savedArchRProject1 <- loadArchRProject("~/Save-ProjHeme2/")
-savedArchRProject2 <- loadArchRProject("~/Save-ProjHeme3/")
-savedArchRProject3 <- loadArchRProject("~/Save-ProjHeme5/")
+savedArchRProject1 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme2/")
+savedArchRProject2 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme3/")
+savedArchRProject3 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme5/")
 
 
 ########################################################################
