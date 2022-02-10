@@ -48,9 +48,9 @@ set.seed(1)
 #Load Saved-project folders path e.g 'Save-ArchRProject2'<- loadArchRProject("path/to/your/Save-ArchRProject2"). Save project also after trajectory analysis e.g as Save-ArchRProject5
 #Please see ArchR  full manual for saveArchRProject() function or use the ArchR.RMD for your analysis provided with the source code which follows the steps illustrated in ArchR full manual. Save-ArchRProject5
 # 
-savedArchRProject1 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme2/")
-savedArchRProject2 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme3/")
-savedArchRProject3 <- loadArchRProject("~/Dropbox (UiO)/Data_Visualization/ShinyAPP_ATAC/ShinyArchR.UIO/ShinyArchR.UiO_UserExample/Save-ProjHeme5/")
+savedArchRProject1 <- loadArchRProject("~/ArchRAnalysis/Save-ProjHeme2/")
+savedArchRProject2 <- loadArchRProject("~/ArchRAnalysis/Save-ProjHeme3/")
+savedArchRProject3 <- loadArchRProject("~/ArchRAnalysis/Save-ProjHeme5/")
 
 
 ########################################################################
