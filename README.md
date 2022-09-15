@@ -1,6 +1,6 @@
 
 # ShinyArchrUiO
-  [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO)(ShinyArchR User interface Open)is an user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of  massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 2021](https://www.nature.com/articles/s41588-021-00790-6)).
+  [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO)(ShinyArchR User interface Open) is a user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of  massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 2021](https://www.nature.com/articles/s41588-021-00790-6)).
   Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website ([Sharma et al, Bioinformatics,2021](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)). Learn more from our videotutorial: https://youtu.be/gIUGgJWlWCw.
  
  ## Downsampled tutorial data
@@ -8,7 +8,7 @@
 ## Input Data for ArchR processing
 ArchR can read a wide range of input formats, often in fragment files or BAM files, but it is also capable of reading scATAC-seq data. scATAC-seq fragment files contain the corresponding cell ID for each scATAC-seq fragment, sorted into tabix files. BAM files contain information about each scATAC-seq fragment, raw sequence, cellular barcode ID, and other information in tabularized format. The preprocessing pipeline defines what input format is used. The 10x Genomics Cell Ranger software, for example, returns fragment files, while sci-ATAC-seq applications use BAM files. To read fragment files, ArchR uses "scanTabix" and to read BAM files, it uses "scanBam". To support the input process, input data chunks are converted to a compressed table-based representation of fragments, which includes the fragment chromosome, offset-adjusted start and end positions, as well as the cellular barcode ID. To preserve memory consumption while maintaining quick access to chunks, chunks are stored in a temporary HDF5-formatted file. The final step involves reading, organizing, and rewriting all portions of each chromosome to an Arrow file within a single HDF5 group referred to as a "fragment". In this way, ArchR is able to handle extremely large input files efficiently and with very low memory usage, allowing it to fully utilize parallel processing.
 
-***
+**
 ## Salient Features
   ShinyArchR.UiO is written in R Programming using Shiny package, enabling its use locally as well as making it available to broader 
   audiences by hosting on Shiny Server.
@@ -19,15 +19,16 @@ ArchR can read a wide range of input formats, often in fragment files or BAM fil
  
 ## Table of Contents and Additional Tutorials
 ### This readme is divided into the following sections:
-* Installation
-* Quick Start Guide to rapidly deploy a ShinyArchRUiO
-* Frequently Asked Question
-* Links and Citation info 
+* [Installation](https://github.com/EskelandLab/ShinyArchRUiO#installation)
+* [Quick Start Guide to rapidly deploy a ShinyArchRUiO](https://github.com/EskelandLab/ShinyArchRUiO#quick-start-guide)
+* [Frequently Asked Questions](https://github.com/EskelandLab/ShinyArchRUiO#frequently-asked-questions)
+* [Citation and additional info]https://github.com/EskelandLab/ShinyArchRUiO#additional-info
 
 ## Installation:
- ```r 
- Download ShinyArchR.UiO from github.com/EskelandLab/ShinyArchR.UiO
+
+ Download ShinyArchR.UiO from github.com/EskelandLab/ShinyArchR.UiO  
  or 
+ ```r 
  git clone https://github.com/EskelandLab/ShinyArchR.UiO.git
 ```
 ## Quick Start guide
@@ -124,7 +125,7 @@ Navigate to the folder containing ShinyArchRUiO.
 * Visualize heatmaps for Peak2Genelinks top markers in scATAC-seq and scRNA-seq.  
 
 **For a more detailed description, Please see [supplementary information](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2.supplementary-material).**
-## Frequently Asked Questions.  
+## Frequently Asked Questions  
 
 Q: Which version of R programming is required?
 * R version 4.0.0  and over is recommended.  
@@ -159,7 +160,7 @@ Kernel:	Linux 4.18.0-305.el8.x86_64
 ```
 
 ***
-## Links
+## Additional info
 For a general introduction of the tool and how to setting up ShinyArchR.UiO locally. 
 
 Please watch ShinyArchR.UiO's **[Introduction video tutorial](https://youtu.be/tSLj9CoNUrs)**.  
