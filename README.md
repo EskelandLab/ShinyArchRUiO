@@ -8,7 +8,7 @@
 ## Input Data for ArchR processing
 ArchR can read a wide range of input formats, often in fragment files or BAM files, but it is also capable of reading scATAC-seq data. scATAC-seq fragment files contain the corresponding cell ID for each scATAC-seq fragment, sorted into tabix files. BAM files contain information about each scATAC-seq fragment, raw sequence, cellular barcode ID, and other information in tabularized format. The preprocessing pipeline defines what input format is used. The 10x Genomics Cell Ranger software, for example, returns fragment files, while sci-ATAC-seq applications use BAM files. To read fragment files, ArchR uses "scanTabix" and to read BAM files, it uses "scanBam". To support the input process, input data chunks are converted to a compressed table-based representation of fragments, which includes the fragment chromosome, offset-adjusted start and end positions, as well as the cellular barcode ID. To preserve memory consumption while maintaining quick access to chunks, chunks are stored in a temporary HDF5-formatted file. The final step involves reading, organizing, and rewriting all portions of each chromosome to an Arrow file within a single HDF5 group referred to as a "fragment". In this way, ArchR is able to handle extremely large input files efficiently and with very low memory usage, allowing it to fully utilize parallel processing.
 
-**
+***
 ## Salient Features
   ShinyArchR.UiO is written in R Programming using Shiny package, enabling its use locally as well as making it available to broader 
   audiences by hosting on Shiny Server.
