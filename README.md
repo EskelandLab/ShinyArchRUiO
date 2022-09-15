@@ -22,7 +22,7 @@ ArchR can read a wide range of input formats, often in fragment files or BAM fil
 * [Installation](https://github.com/EskelandLab/ShinyArchRUiO#installation)
 * [Quick Start Guide to rapidly deploy a ShinyArchRUiO](https://github.com/EskelandLab/ShinyArchRUiO#quick-start-guide)
 * [Frequently Asked Questions](https://github.com/EskelandLab/ShinyArchRUiO#frequently-asked-questions)
-* [Citation and additional info]https://github.com/EskelandLab/ShinyArchRUiO#additional-info
+* [Citation and additional info](https://github.com/EskelandLab/ShinyArchRUiO#additional-info)
 
 ## Installation:
 
