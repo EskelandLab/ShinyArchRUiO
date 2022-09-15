@@ -1,6 +1,6 @@
 
 # ShinyArchrUiO
-  [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO)(ShinyArchR User interface Open)is an user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of  massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 2021](https://www.nature.com/articles/s41588-021-00790-6)).
+  [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO)(ShinyArchR User interface Open) is a user-friendly, integrative, and open-source shiny-based web app using R programming for visualization of  massive single-cell chromatin accessibility data (scATAC-seq) based on [ArchR](https://archrproject.com), ([Granja et al, 2021](https://www.nature.com/articles/s41588-021-00790-6)).
   Example of web interface on tutorial dataset is available at [ShinyArchR.UiO](https://cancell.medisin.uio.no/ShinyArchR.UiO) website ([Sharma et al, Bioinformatics,2021](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)). Learn more from our videotutorial: https://youtu.be/gIUGgJWlWCw.
  
  ## Downsampled tutorial data
@@ -19,15 +19,16 @@ ArchR can read a wide range of input formats, often in fragment files or BAM fil
  
 ## Table of Contents and Additional Tutorials
 ### This readme is divided into the following sections:
-* Installation
-* Quick Start Guide to rapidly deploy a ShinyArchRUiO
-* Frequently Asked Question
-* Links and Citation info 
+* [Installation](https://github.com/EskelandLab/ShinyArchRUiO#installation)
+* [Quick Start Guide to rapidly deploy a ShinyArchRUiO](https://github.com/EskelandLab/ShinyArchRUiO#quick-start-guide)
+* [Frequently Asked Questions](https://github.com/EskelandLab/ShinyArchRUiO#frequently-asked-questions)
+* [Citation and additional info]https://github.com/EskelandLab/ShinyArchRUiO#additional-info
 
 ## Installation:
- ```r 
- Download ShinyArchR.UiO from github.com/EskelandLab/ShinyArchR.UiO
+
+ Download ShinyArchR.UiO from github.com/EskelandLab/ShinyArchR.UiO  
  or 
+ ```r 
  git clone https://github.com/EskelandLab/ShinyArchR.UiO.git
 ```
 ## Quick Start guide
@@ -124,7 +125,7 @@ Navigate to the folder containing ShinyArchRUiO.
 * Visualize heatmaps for Peak2Genelinks top markers in scATAC-seq and scRNA-seq.  
 
 **For a more detailed description, Please see [supplementary information](https://www.biorxiv.org/content/10.1101/2021.06.21.449316v2.supplementary-material).**
-## Frequently Asked Questions.  
+## Frequently Asked Questions  
 
 Q: Which version of R programming is required?
 * R version 4.0.0  and over is recommended.  
@@ -159,7 +160,7 @@ Kernel:	Linux 4.18.0-305.el8.x86_64
 ```
 
 ***
-## Links
+## Additional info
 For a general introduction of the tool and how to setting up ShinyArchR.UiO locally. 
 
 Please watch ShinyArchR.UiO's **[Introduction video tutorial](https://youtu.be/tSLj9CoNUrs)**.  
