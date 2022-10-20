@@ -1,22 +1,22 @@
 #####################################################################
-#                 Setting up                                #        
+#                 Setting up                                #
 #####################################################################
 #updated:Feb102022
 # if (!requireNamespace("Shiny", quietly = TRUE)) install.packages("shiny")
-# ##Install ArchR,and its dependencies
+# ##Install ArchR, and its dependencies
 # #check for devtools
 # if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
 # #Install ArchR
-# if (!requireNamespace("ArchR",quietly = TRUE)) devtools::install_github("GreenleafLab/ArchR",ref="master",repos=BiocManager::repositories())
+# if (!requireNamespace("ArchR", quietly = TRUE)) devtools::install_github("GreenleafLab/ArchR", ref = "master", repos = BiocManager::repositories())
 # #Install ArchR dependencies
 # library(ArchR)
 # ArchR::installExtraPackages()
 # #Install presto
-# if (!requireNamespace("presto",quietly = TRUE)) devtools::install_github("immunogenomics/presto")
+# if (!requireNamespace("presto", quietly = TRUE)) devtools::install_github("immunogenomics/presto")
 
 ####
-packages <- c("Seurat","shinycssloaders","hexbin","magick",
-             "gridExtra", "grid","patchwork","shinybusy","ArchR","ggseqlogo")
+packages <- c("Seurat", "shinycssloaders", "hexbin", "magick",
+             "gridExtra", "grid", "patchwork", "shinybusy", "ArchR", "ggseqlogo")
 
 ## Now load or install&load all
 package.check <- lapply(
@@ -32,10 +32,10 @@ package.check <- lapply(
 options(repos = BiocManager::repositories())
 
 #####################################################################
-#                        Setting up ARCHR 
+#                        Setting up ARCHR
 #####################################################################
 #specify desired number of threads , If required
-addArchRThreads(threads = 1) 
+addArchRThreads(threads = 1)
 #specify genome version. Default hg19 set
 addArchRGenome("hg19")
 set.seed(1)
@@ -47,7 +47,7 @@ set.seed(1)
 ##Load the Saved projects folders from ArchR analysis as saved in ArchR full manual using  saveArchRProject() function
 #Load Saved-project folders path e.g 'Save-ArchRProject2'<- loadArchRProject("path/to/your/Save-ArchRProject2"). Save project also after trajectory analysis e.g as Save-ArchRProject5
 #Please see ArchR  full manual for saveArchRProject() function or use the ArchR.RMD for your analysis provided with the source code which follows the steps illustrated in ArchR full manual. Save-ArchRProject5
-# 
+#
 savedArchRProject1 <- loadArchRProject("~/ArchRAnalysis/Save-ProjHeme2/")
 savedArchRProject2 <- loadArchRProject("~/ArchRAnalysis/Save-ProjHeme3/")
 savedArchRProject3 <- loadArchRProject("~/ArchRAnalysis/Save-ProjHeme5/")
@@ -65,24 +65,24 @@ trajectory_name<-"LymphoidU"
 
 cluster_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
-  baseSize=12,
+  baseSize = 12,
   colorBy = "cellColData",
   name = "Clusters",
   embedding = "UMAP",
   rastr = FALSE,
-  size=0.5,
+  size = 0.5,
 
-  )+ggtitle("Colored by scATAC-seq clusters")+theme(text=element_text(size=12), legend.title = element_text(size = 12),legend.text = element_text(size = 6))
+  ) + ggtitle("Colored by scATAC-seq clusters") + theme(text = element_text(size = 12), legend.title = element_text(size = 12), legend.text = element_text(size = 6))
 
 sample_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
-  baseSize=12,
+  baseSize = 12,
   colorBy = "cellColData",
   name = "Sample",
   embedding = "UMAP",
   rastr = FALSE,
-  size=0.5
-)+ ggtitle("Colored by original identity")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
+  size = 0.5
+) +  ggtitle("Colored by original identity") + theme(text = element_text(size = 12), legend.title = element_text( size = 12), legend.text = element_text(size = 6))
 
 unconstrained_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
@@ -90,11 +90,11 @@ unconstrained_umap <- plotEmbedding(
   reducedDims = "IterativeLSI",
   colorBy = "cellColData",
   name = "predictedGroup_Un",
-  baseSize=12,
+  baseSize = 12,
 
   rastr = FALSE,
-  size=0.5
-  )+ggtitle("UMAP: unconstrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
+  size = 0.5
+  ) + ggtitle("UMAP: unconstrained integration") + theme(text = element_text(size = 12), legend.title = element_text( size = 12), legend.text = element_text(size = 6))
 
 constrained_umap <- plotEmbedding(
   ArchRProj = savedArchRProject1,
@@ -102,9 +102,9 @@ constrained_umap <- plotEmbedding(
   colorBy = "cellColData",
   name = "predictedGroup_Co",
   rastr = FALSE,
-  baseSize=12,
-  size=0.5
-)+ggtitle("UMAP: constrained integration")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
+  baseSize = 12,
+  size = 0.5
+) + ggtitle("UMAP: constrained integration") + theme(text = element_text(size = 12), legend.title = element_text( size = 12), legend.text = element_text(size = 6))
 
 
 constrained_remapped_umap <- plotEmbedding(
@@ -112,9 +112,9 @@ constrained_remapped_umap <- plotEmbedding(
   colorBy = "cellColData",
   name = "Clusters2",
   rastr = FALSE,
-  )+ggtitle("UMAP: Constrained remapped clusters")+theme(text=element_text(size=12), legend.title = element_text( size = 12),legend.text = element_text(size = 6))
+  ) + ggtitle("UMAP: Constrained remapped clusters") + theme(text = element_text(size = 12), legend.title = element_text( size = 12), legend.text = element_text(size = 6))
 
-umaps<-list("Clusters"= cluster_umap,"Sample"= sample_umap,"Unconstrained"=unconstrained_umap,"Constrained"=constrained_umap,"Constrained remap"=constrained_remapped_umap)
+umaps <- list("Clusters" =  cluster_umap, "Sample" =  sample_umap, "Unconstrained" = unconstrained_umap, "Constrained" = constrained_umap, "Constrained remap" = constrained_remapped_umap)
 ########################################################################
 #                         MarkerGenes
 ########################################################################
@@ -129,18 +129,18 @@ markersGS <- getMarkerFeatures(
   bias = c("TSSEnrichment", "log10(nFrags)"),
   testMethod = "wilcoxon"
 )
-markerList_p1 <- getMarkers(markersGS, cutOff = "FDR <= 0.1 & Log2FC >= 0.1")
+markerList_p1 <- getMarkers(markersGS, cutOff = "FDR < =  0.1 & Log2FC > =  0.1")
 
 # Find the all the genes available in the data
 gene_names <- markerList_p1[[names(markerList_p1)[1]]]$name
 for (cn in names(markerList_p1)[-1]){
-  gene_names <- union(gene_names,markerList_p1[[cn]]$name)
+  gene_names <- union(gene_names, markerList_p1[[cn]]$name)
 }
 
 ########################################################################
 #                    motifs for feature comparison panel
 ########################################################################
-motifMatrix_forShiny=getMatrixFromProject(
+motifMatrix_forShiny <- getMatrixFromProject(
   ArchRProj = savedArchRProject3,
   useMatrix = "MotifMatrix",
   useSeqnames = NULL,
@@ -149,12 +149,12 @@ motifMatrix_forShiny=getMatrixFromProject(
   threads = getArchRThreads()
 )
 
-#motifMatrix_dropdown=sapply(strsplit(motifMatrix_forShiny@NAMES, "_"), "[", 1)
- motifMatrix_dropdown=motifMatrix_forShiny@NAMES
+
+ motifMatrix_dropdown <- motifMatrix_forShiny@NAMES
 
 #get PWM of motifs and convert them to probability matrix for seqlogo:Utilized function from utils.R of https://github.com/GreenleafLab/ChrAccR
-PWMatrixToProbMatrix <- function(x){
-  if (class(x) != "PWMatrix") stop("x must be a TFBSTools::PWMatrix object")
+PWMatrixToProbMatrix <- function(x) {
+  if (class(x) !=  "PWMatrix") stop("x must be a TFBSTools::PWMatrix object")
   (2^as(x, "matrix"))*TFBSTools::bg(x)/sum(TFBSTools::bg(x))
 }
 
@@ -171,7 +171,7 @@ reducedDims <- "IterativeLSI"
 ########################################################################
 #                         motif footprinting
 ########################################################################
-motifPositions=getPositions(savedArchRProject3)
+motifPositions <- getPositions(savedArchRProject3)
 ########################################################################
 #                       Heatmap:Trajectory and peak2genelink
 ########################################################################
@@ -191,5 +191,3 @@ p_peakMatrix_traj <- plotTrajectoryHeatmap(trajPM, pal = paletteContinuous(set =
 ########################################################################
 #                               End
 ########################################################################
-
-
