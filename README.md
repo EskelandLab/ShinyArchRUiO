@@ -78,7 +78,7 @@ Rscript -e 'install.packages(c("shiny","magick","hexbin","Seurat","shinybusy","g
 ArchRThreads = 1
 ```
 
-* Provide the path to the saved folders (Analysis done and divided into the folders as in ArchR manual is indespansable) in global.R**
+* Provide the path to the saved folders (Analysis done and divided into the folders as in ArchR manual is indespansable) in global.R
 ```r
 savedArchRProject1 <- loadArchRProject("path to projHeme2/")
 savedArchRProject2 <- loadArchRProject("path to ProjHeme3/")
