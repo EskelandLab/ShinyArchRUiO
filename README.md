@@ -142,6 +142,9 @@ Q: How much memory/storage space does ShinyArchR.UiO and the Shiny app consume?
 Q: If you are getting *502 Bad Gateway* error on demo [ShinyArchR.UiO web interface](https://cancell.medisin.uio.no/ShinyArchR.UiO)? 
 * Perform a hard refresh in your browser. Clear your browser cache and delete cookies. Your browser may be holding on to certain files that were saved once you visited the website with a 502 error. Please wait for 5-10 minutes,  This could be due to higher load on our server side , please let us know if the error still persists.  
 
+Q: Does ShinyArchR.UiO supports Seurat objects ?
+* ShinyArchR.UiO doesn't supports Seurat objects. Users can use [ShinyMultiome.UiO](https://github.com/EskelandLab/ShinyMultiome.UiO/) for visualization of analyzed Multiome Seurat objects. 
+
 Q: Specification of ShinyArchR.UiO server ?
 
 ```r 
