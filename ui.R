@@ -479,7 +479,55 @@ about_panel <- tabPanel(
       tags$h3("Contributions and Citation info"),
       tags$p(HTML("ShinyArchR.UiO software is developed at <a href=\"https://www.med.uio.no/cancell/english/groups/chromatin-biology\" target=\"_blank\">Chromatin Biology</a> Lab at <a href=\"https://www.uio.no\" target=\"_blank\">University of Oslo</a>, as an open-source project mainly under the GPL license version 3 (see source code for details).")),
       tags$p(HTML("If ShinyArchR.UiO in any way help you in visualizing and sharing your research work such that it warrants a citation, please cite the ShinyArchR.UiO preprint in BioRXiv or the final publication.")),
-    )
+    ),
+    
+    # Contact
+    tabPanel(
+      "Contact",
+      br(),br(),
+      sidebarPanel(tags$h3("Prof. Dr. Ragnhild Eskeland"),
+                  
+                   fluidRow(
+                     column(1,img(src='re.jpeg', align = "left")),
+                     column(3), 
+                     column(8,
+                            tags$h4(HTML("Associate Professor")),
+                            tags$h5(HTML("<a href=\"https://www.med.uio.no/imb/personer/vit/ragnhesk/index.html\" target=\"_blank\">Chromatin Biology Group</a>")),
+                            tags$h5(HTML("<a href=\"https://www.uio.no\" target=\"_blank\">University of Oslo</a>")),
+                            tags$h5(HTML("Email : <a href=\"mailto:ragnhild.eskeland@medisin.uio.no\" target=\"_blank\">ragnhild.eskeland@medisin.uio.no</a>")),
+                     )
+                   ),
+                   width = 6),
+      
+      sidebarPanel(tags$h3("Dr. Ankush Sharma"),
+                   
+                   fluidRow(
+                     column(1,img(src='as.jpg', align = "left",
+                                  height="200px",style="object-fit:contain")),
+                     column(3), 
+                     column(7,
+                            tags$h4(HTML("Researcher (Bioinformatics)")),
+                            tags$h5(HTML("Chromatin Biology Group")),
+                            tags$h5(HTML("<a href=\"https://www.uio.no\" target=\"_blank\">University of Oslo</a>")),
+                            tags$h5(HTML("Email : <a href=\"mailto:ankush.sharma@medisin.uio.no\" target=\"_blank\">ankush.sharma@medisin.uio.no</a>")),
+                     )
+                   ),
+                   width = 6),
+      
+      sidebarPanel(tags$h3("Akshay Suhag"),
+                   
+                   fluidRow(
+                     column(1,img(src='aa.png', align = "left",
+                                  width="150px",style="object-fit:contain")),
+                     column(3), 
+                     column(7,
+                            tags$h4(HTML("Doctoral Researcher (Bioinformatics)")),
+                            tags$h5(HTML("<a href=\"https://www.urofun.ch\" target=\"_blank\">Functional Urology Group</a>")),
+                            tags$h5(HTML("<a href=\"https://www.dbmr.unibe.ch/about_us/staff/personenpool_index/akshay_akshay/index_eng.html\" target=\"_blank\">University of Bern</a>")),
+                            tags$h5(HTML("Email : <a href=\"mailto:akshay.akshay@unibe.ch\" target=\"_blank\">akshay.akshay@unibe.ch</a>")),
+                     )
+                   ),
+                     width = 6))
 
   )
 
