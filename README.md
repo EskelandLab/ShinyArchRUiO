@@ -48,8 +48,8 @@ devtools::install_github("GreenleafLab/ArchR",ref="master",repos=BiocManager::re
 library(ArchR)
 ArchR::installExtraPackages()
 
-#Installing Required packages  
-install.packages(c("shiny","Seurat", "magick","hexbin","shinybusy","gridExtra", "grid","shinycssloaders") 
+#Installing Required packages
+install.packages(c("shiny","Seurat", "magick","hexbin","shinybusy","gridExtra", "grid", "shinycssloaders"))
 ``` 
 On command Line: 
 
@@ -64,7 +64,7 @@ Rscript -e  'devtools::install_github("GreenleafLab/ArchR",ref="master",repos=Bi
 Rscript -e 'ArchR::installExtraPackages()'
 
 #Installs packages 
-Rscript -e 'install.packages(c("shiny","magick","hexbin","Seurat","shinybusy","gridExtra", "grid","shinycssloaders")' 
+Rscript -e 'install.packages(c("shiny","magick","hexbin","Seurat","shinybusy","gridExtra", "grid", "shinycssloaders"))' 
 ``` 
 
 ### Adding folder paths and parameters 
