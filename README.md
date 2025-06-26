@@ -166,10 +166,10 @@ Kernel:	Linux 4.18.0-305.el8.x86_64
 ## Additional info
 For a general introduction of the tool and how to setting up ShinyArchR.UiO locally. 
 
-Please watch ShinyArchR.UiO's **[Introduction video tutorial](https://youtu.be/tSLj9CoNUrs)**.  
+Please watch ShinyArchR.UiO's **[Introduction video tutorial](https://www.youtube.com/watch?v=gIUGgJWlWCw)**.  
 
 
-Please watch  ShinyArchR.UiO's **[Setup video tutorial](https://youtu.be/q1soZ4Tcyjg)**.  
+Please watch  ShinyArchR.UiO's **[Setup video tutorial](https://www.youtube.com/watch?v=diyySkVfmks)**.  
 
 ## Citations information
 Please cite **ShinyArchR.UiO** article published in **[ OUP Bioinformatics](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btab680/6377776)**
